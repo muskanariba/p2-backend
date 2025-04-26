@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const PORT = 5000;
-const cors = require('cors'); 
-app.use(cors());
+
+app.use(express.json());
 
 // Home Route
 app.get('/home', (req, res) => {
@@ -14,22 +13,18 @@ app.get('/home', (req, res) => {
 
 // About Route
 app.get('/about', (req, res) => {
-  // Ensure this is returning a JSON object
   res.json({
-    title: 'About Us',  // Add key-value pairs
+    title: 'About Us',
     content: 'This is the About Page. We are a company dedicated to bringing the best services to our customers.'
   });
 });
 
 // Contact Route
 app.get('/contact', (req, res) => {
-  // Ensure consistent response format (JSON)
   res.json({
     title: 'Contact Us',
     content: 'Get in touch with us for any inquiries or support.'
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
